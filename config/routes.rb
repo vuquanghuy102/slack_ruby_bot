@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    resource :profile, only: [:show, :update]
+    resources :users
+    resources :companys
+    resources :questions
+    resources :answers
+  end
+  byebug
+  root to: "admin/companys#index"
+  devise_for :users
+  post 'slack/button'
 end
