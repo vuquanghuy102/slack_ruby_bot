@@ -1,6 +1,6 @@
-class CreateQuestionAnswers < ActiveRecord::Migration[5.2]
+class CreateQuestions < ActiveRecord::Migration[5.2]
   def change
-    create_table :question_answers do |t|
+    create_table :questions do |t|
       t.string :title
       t.string :answers
       t.datetime :start_time

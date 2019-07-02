@@ -12,14 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2019_07_02_081800) do
 
-  create_table "answesheets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "question_id"
     t.string "user_name"
     t.string "email_user"
-    t.date "date_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_answesheets_on_question_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -29,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_07_02_081800) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "question_answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "answers"
     t.datetime "start_time"
@@ -37,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_07_02_081800) do
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_question_answers_on_company_id"
+    t.index ["company_id"], name: "index_questions_on_company_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

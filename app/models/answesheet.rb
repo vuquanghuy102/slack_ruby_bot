@@ -1,2 +1,0 @@
-class Answesheet < ApplicationRecord
-end
