@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_07_02_083653) do
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.string "answer_lists"
+    t.integer "type"
     t.datetime "start_time"
     t.datetime "end_time"
     t.bigint "company_id"
