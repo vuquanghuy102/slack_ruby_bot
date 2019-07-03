@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     resources :questions
     resources :answers
   end
-  byebug
   root to: "admin/companys#index"
   devise_for :users
   post 'slack/button'
