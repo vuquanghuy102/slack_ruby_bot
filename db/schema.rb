@@ -14,37 +14,39 @@ ActiveRecord::Schema.define(version: 2019_07_02_083653) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "question_id"
-    t.string "content"
+    t.bigint "choice_id"
     t.string "member_name"
     t.string "member_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["choice_id"], name: "index_answers_on_choice_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "token"
+    t.integer "answer_count"
+    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_choices_on_question_id"
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
-    t.string "answer_lists"
-    t.integer "type"
+    t.boolean "type_question"
+    t.boolean "incognito"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.bigint "company_id"
+    t.bigint "work_space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_questions_on_company_id"
+    t.index ["work_space_id"], name: "index_questions_on_work_space_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "role_id"
-    t.bigint "company_id"
+    t.integer "roles"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -52,9 +54,17 @@ ActiveRecord::Schema.define(version: 2019_07_02_083653) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "work_spaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "token"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_work_spaces_on_user_id"
   end
 
 end
