@@ -8,7 +8,13 @@
 
 User.destroy_all
 
-User.create!({
+User.create!([{
+  roles: "0",
   email: "admin@tomosia.com",
   password: "admin@1234"
-})
+},
+{
+  roles: "1",
+  email: "leader@tomosia.com",
+  password: "leader@1234"
+}])
