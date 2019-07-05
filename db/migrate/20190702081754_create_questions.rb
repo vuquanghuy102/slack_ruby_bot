@@ -3,6 +3,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
     create_table :questions do |t|
       t.string :content
       t.boolean :type_question
+      t.string :id_channel
       t.boolean :incognito
       t.datetime :start_time
       t.datetime :end_time
