@@ -1,17 +1,17 @@
 class ChatBot
   def self.send_message
-    questions = Question.where("active = true")
+    questions = Question.where(active: true)
     questions.each do |question|
       client = Slack::Web::Client.new
       client.token = question.work_space.token
       users = client.users_list.members.select do |member|
         member.profile.email.present? && member.is_bot == false && member.deleted == false
       end
-      choices = question.choices
+      choices = question.choice
 
-      if question.type_question = true
+      if question.type_question == true
         content = {
-          channel: question.id_channel,
+          channel: question.id_channel_slack,
           text: question.content,
           as_user:  "true",
           attachments: [{

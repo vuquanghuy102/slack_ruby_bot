@@ -3,6 +3,7 @@ class CreateWorkSpaces < ActiveRecord::Migration[5.2]
     create_table :work_spaces do |t|
       t.string :name
       t.string :token
+      t.string :id_work_space_slack
       t.references :user
 
       t.timestamps
