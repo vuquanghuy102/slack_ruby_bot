@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :work_space
+  has_many :work_space, dependent: :destroy
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
