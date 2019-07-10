@@ -16,5 +16,8 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   devise_for :users
+
   post 'slack/button'
+  get '/successful' , to: "home#successful"
+  get '/check_auth' , to: "home#check_auth"
 end
