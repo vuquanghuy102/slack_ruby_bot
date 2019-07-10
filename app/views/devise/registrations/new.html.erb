@@ -2,11 +2,14 @@
   <div class="container-login100">
     <div class="wrap-login100 p-t-30 p-b-50">
       <span class="login100-form-title p-b-41">
-        <h2>Account Login</h2>
+        <h2>Sign Up</h2>
       </span>
-      <%= form_for(resource, as: resource_name, url: user_session_path, html: {class: "login100-form validate-form p-b-33 p-t-5"}) do |f| %>
+      <%= form_for(resource, as: resource_name, url: user_registration_path, html: {class: "login100-form validate-form p-b-33 p-t-5"}) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
         <div class="wrap-input100 validate-input">
-          <%= f.email_field :email, autofocus: true,
+          <%= f.email_field :email,
+              autofocus: true,
               autocomplete: "email",
               class: "input100",
               placeholder: "Email" %>
@@ -14,20 +17,20 @@
 
         <div class="wrap-input100 validate-input">
           <%= f.password_field :password,
-              autocomplete: "current-password",
+              autocomplete: "new-password",
               class: "input100",
               placeholder: "Password" %>
         </div>
 
-        <% if devise_mapping.rememberable? %>
-          <div class="form-check">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end %>
+        <div class="wrap-input100 validate-input">
+          <%= f.password_field :password_confirmation,
+              autocomplete: "new-password",
+              class: "input100",
+              placeholder: "Confirmation Password" %>
+        </div>
 
         <div class="container-login100-form-btn m-t-32">
-          <%= f.submit "Log in", class: "login100-form-btn" %>
+          <%= f.submit "Sign up", class: "login100-form-btn" %>
         </div>
 
         <div class="container-login100-form-btn m-t-32">
@@ -37,4 +40,3 @@
     </div>
   </div>
 </div>
-

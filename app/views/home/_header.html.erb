@@ -1,0 +1,48 @@
+<div class="page-title-area">
+  <div class="row align-items-center">
+
+    <% if current_user.nil? %>
+      <div class="col-sm-12 clearfix">
+        <div class="pull-right">
+          <button class="btn btn-primary btn-sign-in" type="button">
+            <%= link_to "Sign In", new_user_session_path %>
+          </button>
+        </div>
+        <div class="pull-right">
+          <button class="btn btn-danger btn-sign-up" type="button" >
+            <%= link_to "Sign Up", new_user_registration_path %>
+          </button>
+        </div>
+      </div>
+    <% else %>
+      <div class="col-sm-12 clearfix">
+        <div class="pull-right">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle btn-profile" type="button" data-toggle="dropdown">
+              <i class="fa fa-user"></i>
+              <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <%#= link_to "Thông tin", admin_profile_path, class: "dropdown-item" %></br>
+              <%= link_to "Đăng xuất", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </div>
+        </div>
+        <div class="pull-right">
+          <button class="btn btn-primary dropdown-toggle btn-profile" type="button">
+            <% if current_user.is_admin? %>
+              <%= link_to "Dasboard", admin_work_spaces_path %>
+            <% else %>
+              <%= link_to "Dasboard", leader_work_spaces_path %>
+            <% end %>
+          </button>
+        </div>
+        <div class="pull-right">
+          <p> Hello, <%= current_user.name %></p>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
