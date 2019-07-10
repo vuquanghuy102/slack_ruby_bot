@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   root to: "home#index"
   devise_for :users
   post 'slack/button'
+  get 'slack/redirect'
 end
