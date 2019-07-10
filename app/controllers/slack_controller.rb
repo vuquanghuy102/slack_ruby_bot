@@ -40,8 +40,6 @@ class SlackController < ApplicationController
     answer.member_name = members.select{|e| e[:name] == request_data['user']['name'] }.first[:name]
     answer.member_email = members.select{|e| e[:name] == request_data['user']['name'] }.first[:email]
 
-    byebug
-
     url = request_data['response_url']
     case request_data['callback_id']
     when 'select_status'
@@ -53,22 +51,6 @@ class SlackController < ApplicationController
         SlackController.send_response(url, msg)
       end
     end
-  end
-
-  def redirect
-    data = {
-      :client_id => ENV['SLACK_CLIENT_ID'],
-      :client_secret => ENV['SLACK_CLIENT_SECRET'],
-      :code => params['code'],
-    }
-
-    url = "https://slack.com/api/oauth.access"
-
-    response = Faraday.post(url) do |req|
-      req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-      req.body = URI.encode_www_form(data)
-    end
-
   end
 
   private
