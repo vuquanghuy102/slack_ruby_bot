@@ -25,7 +25,7 @@ leader = User.create(
 
 work_space1 = WorkSpace.create(
   name: "Huy-Ruby",
-  token: "xoxb-646759876034-658186468293-mN3i0dxZOiZoUNzya0V1QS4z",
+  token: "xoxb-646759876034-658186468293-dVXWjH2M99Hr4SuMNwxuGtqi",
   id_work_space_slack: "TK0NBRS10",
   user_id: leader.id
 )

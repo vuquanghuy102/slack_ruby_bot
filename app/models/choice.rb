@@ -1,4 +1,4 @@
 class Choice < ApplicationRecord
   belongs_to :question
-  belongs_to :answer
+  has_many :answer
 end
